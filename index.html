@@ -116,9 +116,30 @@
         color: inherit !important;
         text-decoration: none !important;
       }
+      /* Keep blocks together across page breaks, but allow the doc to flow to page 2 naturally */
+      header,
+      section,
+      article,
+      footer,
+      aside > section,
+      main > div.grid > div > section,
+      main .relative.break-inside-avoid {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+      section { break-before: auto; }
+      /* Modest print density — keeps look adequate, guarantees 2-page fit */
+      main header { padding-bottom: 0.75rem !important; margin-bottom: 0.85rem !important; }
+      main section { margin-bottom: 0.85rem !important; }
+      .space-y-7 > * + * { margin-top: 0.85rem !important; }
+      .space-y-5 > * + * { margin-top: 0.7rem !important; }
+      article { padding: 0.65rem 0.75rem !important; margin-bottom: 0.35rem !important; }
+      ul.space-y-1 > li + li { margin-top: 0.08rem !important; }
+      ul li { line-height: 1.4 !important; }
+      footer { margin-top: 0.6rem !important; padding-top: 0.5rem !important; }
       @page {
         size: A4;
-        margin: 12mm 14mm;
+        margin: 10mm 14mm;
       }
     }
   </style>
@@ -150,7 +171,7 @@
           <p class="mt-3 text-[15px] font-medium text-ink-700">
             Junior Front-End Developer
             <span class="mx-2 text-ink-300">·</span>
-            Computer Engineering Student
+            Computer Engineering Bachelor Student
           </p>
         </div>
         <div class="hidden sm:flex flex-col items-end gap-1 text-[11px] text-ink-500 pt-2 print:hidden">
@@ -161,7 +182,7 @@
         </div>
       </div>
 
-      <div class="mt-5 grid grid-cols-2 sm:grid-cols-4 gap-y-2 gap-x-5 text-[13px]">
+      <div class="mt-5 flex flex-wrap items-center gap-y-2 gap-x-6 text-[13px]">
         <span class="flex items-center gap-2 text-ink-700">
           <i class="fa-solid fa-location-dot text-accent w-4 text-center"></i>
           Sankt Pölten, Austria
@@ -172,7 +193,7 @@
         </a>
         <a
           href="mailto:alexhonchar4@gmail.com"
-          class="flex items-center gap-2 text-ink-700 hover:text-accent truncate"
+          class="flex items-center gap-2 text-ink-700 hover:text-accent"
         >
           <i class="fa-solid fa-envelope text-accent w-4 text-center"></i>
           alexhonchar4@gmail.com
@@ -195,11 +216,13 @@
         <i class="fa-solid fa-user-astronaut text-[11px]"></i> Profile
       </h2>
       <p class="text-[13.5px] leading-relaxed text-ink-700">
-        Driven Computer Engineering student at
-        <span class="font-semibold text-ink-900">FH St. Pölten</span> with hands-on
-        experience in React and TypeScript. Proven track record of managing
-        high-complexity projects independently — including leading a technical
-        team for an interactive exhibition. Expert in leveraging
+        Driven 1st-year Computer Engineering Bachelor student at
+        <span class="font-semibold text-ink-900">Cherkasy State Business College</span>,
+        currently on an <span class="font-semibold text-ink-900">Erasmus+ exchange</span>
+        in Austria, with hands-on experience in React and TypeScript. Proven
+        track record of managing high-complexity projects independently —
+        including leading a technical team for an interactive exhibition.
+        Expert in leveraging
         <span class="font-semibold text-ink-900">AI-assisted engineering workflows</span>
         to deliver scalable, performant web applications. Passionate about
         Full-Stack evolution and modern UI/UX.
@@ -236,16 +259,16 @@
             </div>
             <ul class="mt-2 space-y-1 text-[13px] text-ink-700 leading-relaxed list-disc pl-5 marker:text-accent">
               <li>
-                Spearheaded the front-end architecture for a high-traffic
-                interactive exhibition app, managing the full development cycle.
+                Architected an innovative kinetic chess game (Chess 960 style)
+                with dynamically rotating 2×2 board segments.
               </li>
               <li>
-                Delivered the workload of a 5-person team solo, ensuring the
-                project was exhibition-ready under tight deadlines.
+                Engineered complex mathematical logic for segment rotation,
+                custom castling rules, and global state synchronization.
               </li>
               <li>
-                Implemented complex UI transitions and responsive layouts with
-                React and TypeScript.
+                Led the technical implementation solo for a 5-person
+                international team, delivering a performant React application.
               </li>
             </ul>
           </article>
@@ -333,23 +356,49 @@
               ></span>
               <div class="flex items-baseline justify-between gap-3 flex-wrap">
                 <h3 class="text-[14px] font-semibold text-ink-900">
-                  Front-End Developer Intern
+                  Front-End Developer Intern · Internship II
                   <span class="text-ink-500 font-normal">— eKreative</span>
                 </h3>
                 <p class="text-[11px] font-medium text-ink-500 whitespace-nowrap">
-                  Jan 2024 — Feb 2025 · Multiple Terms
+                  Jan 2025 — Feb 2025
+                </p>
+              </div>
+              <p class="text-[11.5px] text-ink-500 mb-1.5">Cherkasy, Ukraine</p>
+              <ul class="space-y-1 text-[13px] text-ink-700 leading-relaxed list-disc pl-5 marker:text-accent">
+                <li>
+                  Developed a real-time traffic monitoring application for
+                  Cherkasy using OpenStreetMap API and admin moderation logic.
+                </li>
+                <li>
+                  Invited back for a second term based on high performance and
+                  rapid skill acquisition.
+                </li>
+                <li>
+                  Collaborated in an Agile environment, improving code
+                  maintainability and team velocity.
+                </li>
+              </ul>
+            </div>
+
+            <div class="relative break-inside-avoid">
+              <span
+                class="absolute -left-[25px] top-1.5 w-2.5 h-2.5 rounded-full bg-accent ring-4 ring-accent-soft"
+              ></span>
+              <div class="flex items-baseline justify-between gap-3 flex-wrap">
+                <h3 class="text-[14px] font-semibold text-ink-900">
+                  Front-End Developer Intern · Internship I
+                  <span class="text-ink-500 font-normal">— eKreative</span>
+                </h3>
+                <p class="text-[11px] font-medium text-ink-500 whitespace-nowrap">
+                  Jan 2024 — Feb 2024
                 </p>
               </div>
               <p class="text-[11.5px] text-ink-500 mb-1.5">Cherkasy, Ukraine</p>
               <ul class="space-y-1 text-[13px] text-ink-700 leading-relaxed list-disc pl-5 marker:text-accent">
                 <li>Translated complex Figma mockups into pixel-perfect React components.</li>
                 <li>
-                  Developed a real-time traffic monitoring application for
-                  Cherkasy using OpenStreetMap API and admin moderation logic.
-                </li>
-                <li>
-                  Collaborated in an Agile environment, improving code
-                  maintainability and team velocity.
+                  Built the first production React site with data loading from
+                  JSON — establishing component architecture patterns.
                 </li>
               </ul>
             </div>
@@ -449,14 +498,16 @@
           <div class="space-y-3.5">
             <div>
               <h3 class="text-[13.5px] font-semibold text-ink-900">
-                B.Sc. Computer Engineering
+                B.Sc. in Computer Engineering
               </h3>
-              <p class="text-[12px] text-ink-700">FH St. Pölten, Austria</p>
-              <p class="text-[11px] text-ink-500">2026 — Present</p>
+              <p class="text-[12px] text-ink-700">
+                Cherkasy State Business College, Ukraine
+              </p>
+              <p class="text-[11px] text-ink-500">2025 — Present</p>
             </div>
             <div>
               <h3 class="text-[13.5px] font-semibold text-ink-900">
-                Software Engineering
+                Software Engineering Degree
               </h3>
               <p class="text-[12px] text-ink-700">
                 Cherkasy State Business College, Ukraine
