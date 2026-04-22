@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Oleksandr Honchar — Front-End Developer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+          colors: {
+            ink: {
+              900: '#0f172a',
+              700: '#334155',
+              500: '#64748b',
+              300: '#cbd5e1',
+              100: '#f1f5f9',
+            },
+            accent: {
+              DEFAULT: '#4f46e5',
+              soft: '#eef2ff',
+              deep: '#3730a3',
+            },
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    html,
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-feature-settings: 'ss01', 'cv11';
+      -webkit-font-smoothing: antialiased;
+    }
+    .cv-page {
+      width: 210mm;
+      min-height: 297mm;
+    }
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #4f46e5;
+    }
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, #c7d2fe, transparent);
+    }
+    .tag {
+      display: inline-block;
+      padding: 2px 10px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 500;
+      background: #eef2ff;
+      color: #3730a3;
+      border: 1px solid #e0e7ff;
+    }
+    .rail {
+      position: absolute;
+      left: 0;
+      top: 6px;
+      bottom: 6px;
+      width: 2px;
+      background: linear-gradient(to bottom, #4f46e5 0%, #c7d2fe 100%);
+      border-radius: 2px;
+    }
+    .highlight-card {
+      background: linear-gradient(
+          135deg,
+          rgba(79, 70, 229, 0.04) 0%,
+          rgba(79, 70, 229, 0) 45%
+        ),
+        #ffffff;
+      border: 1px solid #e0e7ff;
+    }
+    a {
+      transition: color 0.15s ease;
+    }
+    @media print {
+      html,
+      body {
+        background: #ffffff !important;
+      }
+      .cv-page {
+        width: 100%;
+        min-height: auto;
+        margin: 0 !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+      }
+      .no-print,
+      .print\\:hidden {
+        display: none !important;
+      }
+      a {
+        color: inherit !important;
+        text-decoration: none !important;
+      }
+      @page {
+        size: A4;
+        margin: 12mm 14mm;
+      }
+    }
+  </style>
+</head>
+<body class="bg-ink-100 text-ink-700">
+  <!-- Download PDF button (hidden on print) -->
+  <button
+    onclick="window.print()"
+    class="no-print print:hidden fixed top-6 right-6 z-50 inline-flex items-center gap-2 rounded-full bg-accent text-white px-5 py-2.5 text-sm font-medium shadow-lg shadow-indigo-500/25 hover:bg-accent-deep hover:shadow-indigo-500/40 transition-all"
+    aria-label="Download as PDF"
+  >
+    <i class="fa-solid fa-arrow-down-to-line"></i>
+    Download PDF
+  </button>
+
+  <main
+    class="cv-page mx-auto my-8 bg-white shadow-2xl shadow-slate-300/60 print:shadow-none print:my-0 px-12 py-10 print:p-0"
+  >
+    <!-- ============ HEADER ============ -->
+    <header class="pb-6 mb-7 border-b border-ink-100 break-inside-avoid">
+      <div class="flex items-start justify-between gap-6">
+        <div>
+          <p class="text-xs font-semibold tracking-[0.25em] uppercase text-accent mb-2">
+            Curriculum Vitae
+          </p>
+          <h1 class="text-[44px] leading-none font-bold tracking-tight text-ink-900">
+            Oleksandr <span class="text-accent">Honchar</span>
+          </h1>
+          <p class="mt-3 text-[15px] font-medium text-ink-700">
+            Junior Front-End Developer
+            <span class="mx-2 text-ink-300">·</span>
+            Computer Engineering Student
+          </p>
+        </div>
+        <div class="hidden sm:flex flex-col items-end gap-1 text-[11px] text-ink-500 pt-2 print:hidden">
+          <span class="tag">Open to work</span>
+          <span class="tag" style="background:#ecfeff;color:#0e7490;border-color:#cffafe">
+            Based in Austria
+          </span>
+        </div>
+      </div>
+
+      <div class="mt-5 grid grid-cols-2 sm:grid-cols-4 gap-y-2 gap-x-5 text-[13px]">
+        <span class="flex items-center gap-2 text-ink-700">
+          <i class="fa-solid fa-location-dot text-accent w-4 text-center"></i>
+          Sankt Pölten, Austria
+        </span>
+        <a href="tel:+380964062217" class="flex items-center gap-2 text-ink-700 hover:text-accent">
+          <i class="fa-solid fa-phone text-accent w-4 text-center"></i>
+          +380 96 406 2217
+        </a>
+        <a
+          href="mailto:alexhonchar4@gmail.com"
+          class="flex items-center gap-2 text-ink-700 hover:text-accent truncate"
+        >
+          <i class="fa-solid fa-envelope text-accent w-4 text-center"></i>
+          alexhonchar4@gmail.com
+        </a>
+        <a
+          href="https://github.com/B1toks"
+          target="_blank"
+          rel="noopener"
+          class="flex items-center gap-2 text-ink-700 hover:text-accent"
+        >
+          <i class="fa-brands fa-github text-accent w-4 text-center"></i>
+          github.com/B1toks
+        </a>
+      </div>
+    </header>
+
+    <!-- ============ SUMMARY ============ -->
+    <section class="mb-7 break-inside-avoid">
+      <h2 class="section-title mb-3">
+        <i class="fa-solid fa-user-astronaut text-[11px]"></i> Profile
+      </h2>
+      <p class="text-[13.5px] leading-relaxed text-ink-700">
+        Driven Computer Engineering student at
+        <span class="font-semibold text-ink-900">FH St. Pölten</span> with hands-on
+        experience in React and TypeScript. Proven track record of managing
+        high-complexity projects independently — including leading a technical
+        team for an interactive exhibition. Expert in leveraging
+        <span class="font-semibold text-ink-900">AI-assisted engineering workflows</span>
+        to deliver scalable, performant web applications. Passionate about
+        Full-Stack evolution and modern UI/UX.
+      </p>
+    </section>
+
+    <!-- ============ TWO COLUMN BODY ============ -->
+    <div class="grid grid-cols-12 gap-8">
+      <!-- ========= LEFT / MAIN ========= -->
+      <div class="col-span-12 md:col-span-8 space-y-7">
+        <!-- CORE PROJECTS -->
+        <section class="break-inside-avoid">
+          <h2 class="section-title mb-4">
+            <i class="fa-solid fa-star text-[11px]"></i> Core Projects
+          </h2>
+
+          <!-- Highlighted: EPS -->
+          <article class="highlight-card rounded-xl p-4 mb-3 break-inside-avoid">
+            <div class="flex items-start justify-between gap-3">
+              <div>
+                <div class="flex items-center gap-2 flex-wrap">
+                  <h3 class="text-[15px] font-semibold text-ink-900">
+                    Interactive Exhibition — "Lucid Dreams"
+                  </h3>
+                  <span class="tag">EPS Project</span>
+                </div>
+                <p class="text-[12px] font-medium text-accent mt-0.5">
+                  Technical Lead · St. Pölten, Austria
+                </p>
+              </div>
+              <p class="text-[11px] font-medium text-ink-500 whitespace-nowrap pt-1">
+                Feb 2026 — Present
+              </p>
+            </div>
+            <ul class="mt-2 space-y-1 text-[13px] text-ink-700 leading-relaxed list-disc pl-5 marker:text-accent">
+              <li>
+                Spearheaded the front-end architecture for a high-traffic
+                interactive exhibition app, managing the full development cycle.
+              </li>
+              <li>
+                Delivered the workload of a 5-person team solo, ensuring the
+                project was exhibition-ready under tight deadlines.
+              </li>
+              <li>
+                Implemented complex UI transitions and responsive layouts with
+                React and TypeScript.
+              </li>
+            </ul>
+          </article>
+
+          <!-- Highlighted: mIGHT LMS -->
+          <article class="highlight-card rounded-xl p-4 mb-3 break-inside-avoid">
+            <div class="flex items-start justify-between gap-3">
+              <div>
+                <div class="flex items-center gap-2 flex-wrap">
+                  <h3 class="text-[15px] font-semibold text-ink-900">
+                    mIGHT — Learning Management System
+                  </h3>
+                  <span class="tag">LMS</span>
+                </div>
+                <p class="text-[12px] font-medium text-accent mt-0.5">
+                  Lead Developer
+                </p>
+              </div>
+              <a
+                href="https://project-g-b1toks-projects.vercel.app/"
+                target="_blank"
+                rel="noopener"
+                class="text-[11px] font-medium text-accent hover:text-accent-deep whitespace-nowrap pt-1 flex items-center gap-1"
+              >
+                <i class="fa-solid fa-arrow-up-right-from-square"></i> Live
+              </a>
+            </div>
+            <ul class="mt-2 space-y-1 text-[13px] text-ink-700 leading-relaxed list-disc pl-5 marker:text-accent">
+              <li>
+                Engineered a comprehensive LMS from scratch with role-based
+                access for Admin, Teacher, and Student.
+              </li>
+              <li>
+                Developed a dynamic grade journal with auto-save and a
+                dark-themed adaptive calendar.
+              </li>
+              <li>
+                Built animated transitions and responsive design using Next.js
+                and ShadCN UI for a premium UX.
+              </li>
+            </ul>
+          </article>
+
+          <!-- ShowPlus -->
+          <article class="rounded-xl p-4 border border-ink-100 break-inside-avoid">
+            <div class="flex items-start justify-between gap-3">
+              <div>
+                <h3 class="text-[14.5px] font-semibold text-ink-900">
+                  ShowPlus — Rental Service Platform
+                </h3>
+                <p class="text-[12px] font-medium text-ink-500 mt-0.5">
+                  Web Developer · Commercial Project
+                </p>
+              </div>
+              <a
+                href="https://showplus-inflatables.com/"
+                target="_blank"
+                rel="noopener"
+                class="text-[11px] font-medium text-accent hover:text-accent-deep whitespace-nowrap pt-1 flex items-center gap-1"
+              >
+                <i class="fa-solid fa-arrow-up-right-from-square"></i> Live
+              </a>
+            </div>
+            <p class="mt-1.5 text-[13px] text-ink-700 leading-relaxed">
+              Built a commercial rental service platform using WordPress and
+              customised Elementor components. Optimised performance and
+              cross-device responsiveness — translating client requirements
+              directly into a functional business tool.
+            </p>
+          </article>
+        </section>
+
+        <!-- EXPERIENCE -->
+        <section class="break-inside-avoid">
+          <h2 class="section-title mb-4">
+            <i class="fa-solid fa-briefcase text-[11px]"></i> Experience
+          </h2>
+
+          <div class="relative pl-6 space-y-5">
+            <span class="rail"></span>
+
+            <div class="relative break-inside-avoid">
+              <span
+                class="absolute -left-[25px] top-1.5 w-2.5 h-2.5 rounded-full bg-accent ring-4 ring-accent-soft"
+              ></span>
+              <div class="flex items-baseline justify-between gap-3 flex-wrap">
+                <h3 class="text-[14px] font-semibold text-ink-900">
+                  Front-End Developer Intern
+                  <span class="text-ink-500 font-normal">— eKreative</span>
+                </h3>
+                <p class="text-[11px] font-medium text-ink-500 whitespace-nowrap">
+                  Jan 2024 — Feb 2025 · Multiple Terms
+                </p>
+              </div>
+              <p class="text-[11.5px] text-ink-500 mb-1.5">Cherkasy, Ukraine</p>
+              <ul class="space-y-1 text-[13px] text-ink-700 leading-relaxed list-disc pl-5 marker:text-accent">
+                <li>Translated complex Figma mockups into pixel-perfect React components.</li>
+                <li>
+                  Developed a real-time traffic monitoring application for
+                  Cherkasy using OpenStreetMap API and admin moderation logic.
+                </li>
+                <li>
+                  Collaborated in an Agile environment, improving code
+                  maintainability and team velocity.
+                </li>
+              </ul>
+            </div>
+
+            <div class="relative break-inside-avoid">
+              <span
+                class="absolute -left-[25px] top-1.5 w-2.5 h-2.5 rounded-full bg-accent ring-4 ring-accent-soft"
+              ></span>
+              <div class="flex items-baseline justify-between gap-3 flex-wrap">
+                <h3 class="text-[14px] font-semibold text-ink-900">
+                  Interim Front-End Developer
+                  <span class="text-ink-500 font-normal">— Contract</span>
+                </h3>
+              </div>
+              <ul class="mt-1 space-y-1 text-[13px] text-ink-700 leading-relaxed list-disc pl-5 marker:text-accent">
+                <li>
+                  Stepped in to manage a high-priority commercial project during
+                  a critical transition, sustaining a 4-year veteran's workload.
+                </li>
+                <li>
+                  Ensured 100% uptime and continuous feature delivery through
+                  rigorous debugging and rapid iteration.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- ========= RIGHT / SIDEBAR ========= -->
+      <aside class="col-span-12 md:col-span-4 space-y-7">
+        <!-- SKILLS -->
+        <section class="break-inside-avoid">
+          <h2 class="section-title mb-3">
+            <i class="fa-solid fa-code text-[11px]"></i> Technical Skills
+          </h2>
+
+          <div class="space-y-3">
+            <div>
+              <p class="text-[11px] font-semibold uppercase tracking-wider text-ink-500 mb-1.5">
+                Languages & Frameworks
+              </p>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="tag">React</span>
+                <span class="tag">TypeScript</span>
+                <span class="tag">Next.js</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">HTML5</span>
+                <span class="tag">CSS3</span>
+                <span class="tag">Python</span>
+              </div>
+            </div>
+
+            <div>
+              <p class="text-[11px] font-semibold uppercase tracking-wider text-ink-500 mb-1.5">
+                Tools & Libraries
+              </p>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="tag">Tailwind CSS</span>
+                <span class="tag">ShadCN UI</span>
+                <span class="tag">Vite</span>
+                <span class="tag">Git</span>
+                <span class="tag">Supabase</span>
+                <span class="tag">OpenStreetMap</span>
+              </div>
+            </div>
+
+            <div>
+              <p class="text-[11px] font-semibold uppercase tracking-wider text-ink-500 mb-1.5">
+                Platforms
+              </p>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="tag">WordPress / Elementor</span>
+                <span class="tag">Vercel</span>
+                <span class="tag">GitHub Pages</span>
+              </div>
+            </div>
+
+            <div>
+              <p class="text-[11px] font-semibold uppercase tracking-wider text-ink-500 mb-1.5">
+                Workflow
+              </p>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="tag">AI-Assisted Eng.</span>
+                <span class="tag">WebStorm AI</span>
+                <span class="tag">Agile / Scrum</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- EDUCATION -->
+        <section class="break-inside-avoid">
+          <h2 class="section-title mb-3">
+            <i class="fa-solid fa-graduation-cap text-[11px]"></i> Education
+          </h2>
+          <div class="space-y-3.5">
+            <div>
+              <h3 class="text-[13.5px] font-semibold text-ink-900">
+                B.Sc. Computer Engineering
+              </h3>
+              <p class="text-[12px] text-ink-700">FH St. Pölten, Austria</p>
+              <p class="text-[11px] text-ink-500">2026 — Present</p>
+            </div>
+            <div>
+              <h3 class="text-[13.5px] font-semibold text-ink-900">
+                Software Engineering
+              </h3>
+              <p class="text-[12px] text-ink-700">
+                Cherkasy State Business College, Ukraine
+              </p>
+              <p class="text-[11px] text-ink-500">2021 — 2025</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- LANGUAGES -->
+        <section class="break-inside-avoid">
+          <h2 class="section-title mb-3">
+            <i class="fa-solid fa-language text-[11px]"></i> Languages
+          </h2>
+          <div class="space-y-2.5">
+            <div>
+              <div class="flex items-center justify-between text-[12.5px]">
+                <span class="font-medium text-ink-900">Ukrainian</span>
+                <span class="text-ink-500">Native · C2</span>
+              </div>
+              <div class="mt-1 h-1 rounded-full bg-ink-100 overflow-hidden">
+                <div class="h-full bg-accent" style="width: 100%"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex items-center justify-between text-[12.5px]">
+                <span class="font-medium text-ink-900">English</span>
+                <span class="text-ink-500">Professional · B2+</span>
+              </div>
+              <div class="mt-1 h-1 rounded-full bg-ink-100 overflow-hidden">
+                <div class="h-full bg-accent" style="width: 78%"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex items-center justify-between text-[12.5px]">
+                <span class="font-medium text-ink-900">German</span>
+                <span class="text-ink-500">Learning · A1</span>
+              </div>
+              <div class="mt-1 h-1 rounded-full bg-ink-100 overflow-hidden">
+                <div class="h-full bg-accent" style="width: 20%"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </aside>
+    </div>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="mt-8 pt-4 border-t border-ink-100 flex items-center justify-between text-[10.5px] text-ink-500 break-inside-avoid">
+      <span>Oleksandr Honchar · Curriculum Vitae</span>
+      <span>Last updated April 2026</span>
+    </footer>
+  </main>
+
+  <script>
+    // Keyboard shortcut: Ctrl/Cmd + P is native. Ctrl/Cmd + D triggers download flow.
+    document.addEventListener('keydown', (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'd') {
+        e.preventDefault();
+        window.print();
+      }
+    });
+  </script>
+</body>
+</html>
